@@ -31,20 +31,19 @@ jobs:
       - name: Build and upload
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: build curseforge modrinth publish
+          arguments: build modrinth publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
-          CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
           CHANGELOG: ${{ github.event.release.body }}
           CI: true
 
       - name: Upload forge jar to release
         uses: svenstaro/upload-release-action@v2
         with:
-          file: forge/build/libs/data_trades-forge-${{ github.event.release.tag_name }}.jar
+          file: forge/build/libs/registry_dump-forge-${{ github.event.release.tag_name }}.jar
 
       - name: Upload fabric jar to release
         uses: svenstaro/upload-release-action@v2
         with:
-          file: fabric/build/libs/data_trades-fabric-${{ github.event.release.tag_name }}.jar
+          file: fabric/build/libs/registry_dump-fabric-${{ github.event.release.tag_name }}.jar

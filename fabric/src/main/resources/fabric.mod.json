@@ -4,7 +4,7 @@
   "version": "${mod_version}",
 
   "name": "${mod_name}",
-  "description": "Allows easy customization of villager trades using datapacks",
+  "description": "Use commands to export the IDs of registry entries into JSON files",
   "authors": ["${mod_author}"],
   "contact": {
     "sources": "https://github.com/${repository}",
