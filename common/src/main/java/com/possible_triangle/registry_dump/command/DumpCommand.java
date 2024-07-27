@@ -8,6 +8,7 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.ResourceKeyArgument;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
 
 import java.util.function.Predicate;
@@ -18,7 +19,7 @@ public class DumpCommand {
         dispatcher.register(Commands.literal("dump").requires(it -> it.hasPermission(3))
                 .then(Commands.literal("registry")
                         .executes(ctx -> dumpRegistries(ctx, $ -> true))
-                        .then(Commands.argument("type", ResourceKeyArgument.key(Registry.REGISTRY.key()))
+                        .then(Commands.argument("type", ResourceKeyArgument.key(BuiltInRegistries.REGISTRY.key()))
                                 .executes(ctx -> dumpRegistries(ctx, createArgumentPredicate(ctx)))
                         )
                 )

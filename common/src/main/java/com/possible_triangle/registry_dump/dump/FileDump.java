@@ -45,7 +45,10 @@ public class FileDump implements IDump {
 
             final var file = registryDirectory.resolve(entry.getKey() + ".json");
             final var json = new JsonArray(ids.size());
-            ids.forEach(it -> json.add(it.toString()));
+            ids.stream()
+                    .map(ResourceLocation::toString)
+                    .sorted()
+                    .forEach(json::add);
             write(file, json);
         }
     }
