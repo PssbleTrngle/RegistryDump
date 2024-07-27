@@ -10,7 +10,7 @@ version="${mod_version}"
 displayName="${mod_name}"
 authors="${mod_author}"
 description='''
-Allows easy customization of villager trades using datapacks
+Use commands to export the IDs of registry entries into JSON files
 '''
 
 [[dependencies.${mod_id}]]
