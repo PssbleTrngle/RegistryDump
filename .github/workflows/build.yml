@@ -15,7 +15,7 @@ jobs:
 
       - uses: actions/setup-java@v3
         with:
-          java-version: 17
+          java-version: 21
           distribution: temurin
 
       - name: Validate Gradle wrapper
@@ -47,3 +47,8 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           file: fabric/build/libs/registry_dump-fabric-${{ github.event.release.tag_name }}.jar
+
+      - name: Upload neoforge jar to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          file: neoforge/build/libs/registry_dump-neoforge-${{ github.event.release.tag_name }}.jar
