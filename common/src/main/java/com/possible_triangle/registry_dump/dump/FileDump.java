@@ -4,8 +4,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.possible_triangle.registry_dump.service.IPlatformHelper;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
@@ -51,6 +53,20 @@ public class FileDump implements IDump {
                     .forEach(json::add);
             write(file, json);
         }
+    }
+
+    @Override
+    public void dump(Collection<IPlatformHelper.ModInfo> mods, boolean simple) throws CommandSyntaxException {
+        final var file = outputDirectory.resolve("mods.json");
+
+        final var json = new JsonArray(mods.size());
+
+        mods.forEach(mod -> {
+            if(simple) json.add(mod.id());
+            else json.add(mod.toJson());
+        });
+
+        write(file, json);
     }
 
     private Map<String, Collection<ResourceLocation>> gatherIds(Stream<? extends Holder<?>> entries) {
