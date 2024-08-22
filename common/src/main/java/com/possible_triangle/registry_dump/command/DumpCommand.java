@@ -1,9 +1,12 @@
 package com.possible_triangle.registry_dump.command;
 
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.possible_triangle.registry_dump.CommonClass;
+import com.possible_triangle.registry_dump.Services;
+import com.sun.jdi.connect.Connector;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.ResourceKeyArgument;
@@ -20,6 +23,12 @@ public class DumpCommand {
                         .executes(ctx -> dumpRegistries(ctx, $ -> true))
                         .then(Commands.argument("type", ResourceKeyArgument.key(Registry.REGISTRY.key()))
                                 .executes(ctx -> dumpRegistries(ctx, createArgumentPredicate(ctx)))
+                        )
+                )
+                .then(Commands.literal("mods")
+                        .executes(ctx -> dumpMods(ctx, true))
+                        .then(Commands.argument("simple", BoolArgumentType.bool())
+                                .executes(ctx -> dumpMods(ctx, BoolArgumentType.getBool(ctx, "simple")))
                         )
                 )
         );
@@ -42,6 +51,16 @@ public class DumpCommand {
         }
 
         return registries.size();
+    }
+
+    private static int dumpMods(CommandContext<CommandSourceStack> context, boolean simple) throws CommandSyntaxException {
+        final var server = context.getSource().getServer();
+        final var mods = Services.PLATFORM.collectMods().toList();
+        final var emitter = CommonClass.getDump(server);
+
+        emitter.dump(mods, simple);
+
+        return mods.size();
     }
 
 }
