@@ -1,7 +1,6 @@
 package com.possible_triangle.registry_dump;
 
 import com.possible_triangle.registry_dump.service.IPlatformHelper;
-
 import java.util.ServiceLoader;
 
 public class Services {

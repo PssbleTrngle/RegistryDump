@@ -6,15 +6,13 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.possible_triangle.registry_dump.CommonClass;
 import com.possible_triangle.registry_dump.Services;
-import com.sun.jdi.connect.Connector;
+import java.util.function.Predicate;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.ResourceKeyArgument;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
-
-import java.util.function.Predicate;
 
 public class DumpCommand {
 

@@ -1,11 +1,10 @@
 package com.possible_triangle.registry_dump.platform;
 
 import com.possible_triangle.registry_dump.service.IPlatformHelper;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.forgespi.language.IModInfo;
-
 import java.net.URL;
 import java.util.stream.Stream;
+import net.minecraftforge.fml.ModList;
+import net.minecraftforge.forgespi.language.IModInfo;
 
 public class ForgePlatformHelper implements IPlatformHelper {
 

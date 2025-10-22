@@ -2,14 +2,12 @@ package com.possible_triangle.registry_dump.dump;
 
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.possible_triangle.registry_dump.service.IPlatformHelper;
+import java.util.Collection;
+import java.util.stream.Stream;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceKey;
-
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Stream;
 
 public interface IDump {
 

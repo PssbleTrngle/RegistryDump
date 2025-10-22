@@ -1,11 +1,19 @@
 plugins {
-    idea
-    id("com.possible-triangle.gradle") version ("0.2.4")
+    id("com.possible-triangle.core")
+    id("com.possible-triangle.common") apply false
+    id("com.possible-triangle.fabric") apply false
+    id("com.possible-triangle.forge") apply false
+    id("com.possible-triangle.neoforge") apply false
 }
 
 subprojects {
-    enablePublishing {
-        githubPackages()
+    apply(plugin = "com.possible-triangle.core")
+
+    upload {
+        maven {
+            nexus()
+        }
     }
 }
 
+enableSpotless()

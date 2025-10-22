@@ -2,9 +2,8 @@ package com.possible_triangle.registry_dump.service;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import org.jetbrains.annotations.Nullable;
-
 import java.util.stream.Stream;
+import org.jetbrains.annotations.Nullable;
 
 public interface IPlatformHelper {
 
