@@ -16,7 +16,7 @@ public interface IDump {
     <T> void dump(ResourceKey<? extends Registry<T>> key, Stream<? extends Holder<T>> entries) throws CommandSyntaxException;
 
     default <T> void dump(RegistryAccess.RegistryEntry<T> registry) throws CommandSyntaxException {
-        dump(registry.key(), registry.value().holders());
+        dump(registry.key(), registry.value().listElements());
     }
 
 }
