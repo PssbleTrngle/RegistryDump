@@ -1,10 +1,10 @@
 [ISSUES]: https://github.com/PssbleTrngle/RegistryDump/issues
-
 [DOWNLOAD]: https://modrinth.com/project/registry-dump/versions
-
 [MODRINTH]: https://modrinth.com/project/registry-dump
 
-# Registry Dump
+<!-- modrinth_exclude.start -->
+
+# Registry Dump <img src="https://raw.githubusercontent.com/PssbleTrngle/RegistryDump/1.21.x/common/src/main/resources/assets/registry_dump/icon.svg" align="right" height="128" />
 
 [![Release](https://img.shields.io/github/v/release/PssbleTrngle/RegistryDump?label=Version&sort=semver)][DOWNLOAD]
 [![Issues](https://img.shields.io/github/issues/PssbleTrngle/RegistryDump?label=Issues)][ISSUES]
@@ -13,20 +13,25 @@
 <!-- modrinth_exclude.end -->
 
 Dump all IDs of known registry entries into JSON files.
+
 ```
 /dump registry
 ```
+
 A specific registry can also be specified, by default all registries are exported.
+
 ```
 /dump registry minecraft:item
 ```
 
 The JSON files are created under `dump` within your minecraft directory and take the following shape:
+
 ```
 dump/[registry key]/[namespace].json
 ```
 
 For example
+
 ```
 dump/banner_pattern/minecraft.json
 dump/item/brazier.json
