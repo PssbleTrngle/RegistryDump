@@ -1,0 +1,18 @@
+{
+   "$schema": "https://workflows.somethingcatchy.net/schema/config.json",
+   "$version": "1.0",
+   "type": "minecraft",
+   "issueTemplates": false,
+   "sonar": true,
+   "loaders": [
+      "neoforge",
+      "forge",
+      "fabric"
+   ],
+   "upload": {
+      "nexus": true,
+      "github": true,
+      "modrinth": true,
+      "curseforge": true
+   }
+}
