@@ -3,8 +3,5 @@
   "$version": "1.0",
   "type": "minecraft",
   "loaders": ["neoforge", "forge", "fabric"],
-  "upload": {
-    "nexus": true,
-    "modrinth": true
-  }
+  "upload": { "nexus": true, "modrinth": true }
 }
