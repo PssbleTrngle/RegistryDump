@@ -3,7 +3,7 @@
   "id": "${mod_id}",
   "version": "${mod_version}",
   "name": "${mod_name}",
-  "description": "Use commands to export the IDs of registry entries into JSON files",
+  "description": "${mod_description}",
   "authors": [
     "${mod_author}"
   ],
@@ -11,7 +11,7 @@
     "sources": "https://github.com/${repository}",
     "issues": "https://github.com/${repository}/issues"
   },
-  "license": "CC0-1.0",
+  "license": "https://github.com/${repository}/blob/HEAD/LICENSE.md",
   "environment": "*",
   "entrypoints": {
     "main": [
@@ -21,7 +21,7 @@
   "depends": {
     "fabricloader": ">=0.14",
     "fabric-api": "*",
-    "minecraft": "1.21.x",
-    "java": ">=17"
+    "minecraft": "${mc_version}",
+    "java": ">=21"
   }
 }

@@ -4,7 +4,7 @@
 
 <!-- modrinth_exclude.start -->
 
-# Registry Dump <img src="https://raw.githubusercontent.com/PssbleTrngle/RegistryDump/1.21.x/common/src/main/resources/assets/registry_dump/icon.svg" align="right" height="128" />
+# Registry Dump <img src="/common/src/main/resources/assets/registry_dump/icon.svg" align="right" height="128" />
 
 [![Release](https://img.shields.io/github/v/release/PssbleTrngle/RegistryDump?label=Version&sort=semver)][DOWNLOAD]
 [![Issues](https://img.shields.io/github/issues/PssbleTrngle/RegistryDump?label=Issues)][ISSUES]
