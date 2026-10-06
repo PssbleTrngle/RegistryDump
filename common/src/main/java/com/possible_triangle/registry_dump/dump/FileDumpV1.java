@@ -1,7 +1,5 @@
 package com.possible_triangle.registry_dump.dump;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.possible_triangle.registry_dump.service.IPlatformHelper;
@@ -14,8 +12,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 
 public class FileDumpV1 implements IDump {
-
-    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
     private final Path outputDirectory;
 

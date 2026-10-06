@@ -28,8 +28,8 @@ public interface IDump {
 
     Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
-    DynamicCommandExceptionType FAILED_WRITE = new DynamicCommandExceptionType(it -> Component.literal("Failed to write to {}").append(it.toString()));
-    DynamicCommandExceptionType FAILED_CREATE = new DynamicCommandExceptionType(it -> Component.literal("Failed to create {}").append(it.toString()));
+    DynamicCommandExceptionType FAILED_WRITE = new DynamicCommandExceptionType(it -> Component.literal("Failed to write to ").append(it.toString()));
+    DynamicCommandExceptionType FAILED_CREATE = new DynamicCommandExceptionType(it -> Component.literal("Failed to create ").append(it.toString()));
 
     int LATEST_VERSION = 2;
 
