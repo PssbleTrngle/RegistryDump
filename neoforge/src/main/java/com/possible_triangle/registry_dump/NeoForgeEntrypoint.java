@@ -9,8 +9,6 @@ import net.neoforged.neoforge.event.RegisterCommandsEvent;
 public class NeoForgeEntrypoint {
 
     public NeoForgeEntrypoint() {
-        CommonClass.init();
-
         NeoForge.EVENT_BUS.addListener((RegisterCommandsEvent event) -> {
             DumpCommand.register(event.getDispatcher());
         });

@@ -8,8 +8,6 @@ public class FabricEntrypoint implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        CommonClass.init();
-
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) ->
                 DumpCommand.register(dispatcher)
         );
