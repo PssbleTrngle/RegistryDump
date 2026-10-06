@@ -34,7 +34,7 @@ public interface IDump {
     int LATEST_VERSION = 2;
 
     static IDump get(MinecraftServer server, int version) throws CommandSyntaxException {
-        var outputDirectory = server.getServerDirectory().resolve("dump");
+        var outputDirectory = server.getServerDirectory().toPath().resolve("dump");
         prepare(outputDirectory, version);
         return switch (version) {
             case 1 -> new FileDumpV1(outputDirectory);

@@ -11,9 +11,9 @@ import java.util.stream.Stream;
 
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagManager;
 
 public class FileDumpV2 implements IDump {
 
@@ -31,7 +31,7 @@ public class FileDumpV2 implements IDump {
         final var metadata = new JsonObject();
         metadata.addProperty("namespace", key.location().getNamespace());
         metadata.addProperty("path", key.location().getPath());
-        metadata.addProperty("tags", Registries.tagsDirPath(key));
+        metadata.addProperty("tags", TagManager.getTagDir(key));
         IDump.write(registryDirectory.resolve(".registry.json"), metadata);
 
         for (var entry : byNamespace.entrySet()) {
