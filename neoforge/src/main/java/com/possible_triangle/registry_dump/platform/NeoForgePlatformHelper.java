@@ -1,6 +1,8 @@
 package com.possible_triangle.registry_dump.platform;
 
 import com.possible_triangle.registry_dump.service.IPlatformHelper;
+
+import java.net.URL;
 import java.util.stream.Stream;
 import net.neoforged.fml.ModList;
 
@@ -12,7 +14,7 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
                 it.getModId(),
                 it.getModInfo().getDisplayName(),
                 it.getModInfo().getDescription(),
-                it.getModInfo().getModURL().toString()
+                it.getModInfo().getModURL().map(URL::toString).orElse(null)
         ));
     }
 
