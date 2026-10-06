@@ -26,13 +26,13 @@ public class FileDumpV2 implements IDump {
     @Override
     public <T> void dump(ResourceKey<? extends Registry<T>> key, Stream<? extends Holder<T>> entries) throws CommandSyntaxException {
         final var registryDirectory = outputDirectory.resolve(key.location().getNamespace()).resolve(key.location().getPath());
-        final var byNamespace = gatherIds(entries);
+        final var byNamespace = IDump.gatherIds(entries);
 
         final var metadata = new JsonObject();
         metadata.addProperty("namespace", key.location().getNamespace());
         metadata.addProperty("path", key.location().getPath());
         metadata.addProperty("tags", Registries.tagsDirPath(key));
-        write(registryDirectory.resolve(".registry.json"), metadata);
+        IDump.write(registryDirectory.resolve(".registry.json"), metadata);
 
         for (var entry : byNamespace.entrySet()) {
             var ids = entry.getValue();
@@ -43,7 +43,7 @@ public class FileDumpV2 implements IDump {
                     .map(ResourceLocation::toString)
                     .sorted()
                     .forEach(json::add);
-            write(file, json);
+            IDump.write(file, json);
         }
     }
 
@@ -58,7 +58,7 @@ public class FileDumpV2 implements IDump {
             else json.add(mod.toJson());
         });
 
-        write(file, json);
+        IDump.write(file, json);
     }
 
 }

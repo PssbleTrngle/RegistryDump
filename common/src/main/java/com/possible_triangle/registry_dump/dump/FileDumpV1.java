@@ -26,7 +26,7 @@ public class FileDumpV1 implements IDump {
     @Override
     public <T> void dump(ResourceKey<? extends Registry<T>> key, Stream<? extends Holder<T>> entries) throws CommandSyntaxException {
         final var registryDirectory = outputDirectory.resolve(key.location().getPath());
-        final var byNamespace = gatherIds(entries);
+        final var byNamespace = IDump.gatherIds(entries);
 
         for(var entry : byNamespace.entrySet()) {
             var ids = entry.getValue();
@@ -37,7 +37,7 @@ public class FileDumpV1 implements IDump {
                     .map(ResourceLocation::toString)
                     .sorted()
                     .forEach(json::add);
-            write(file, json);
+            IDump.write(file, json);
         }
     }
 
@@ -52,7 +52,7 @@ public class FileDumpV1 implements IDump {
             else json.add(mod.toJson());
         });
 
-        write(file, json);
+        IDump.write(file, json);
     }
 
 }

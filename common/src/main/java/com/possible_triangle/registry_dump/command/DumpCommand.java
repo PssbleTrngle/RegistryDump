@@ -42,7 +42,7 @@ public class DumpCommand {
         return key::equals;
     }
 
-    private static IDump getDump(CommandContext<CommandSourceStack> context) {
+    private static IDump getDump(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
         int version;
         try {
             version = IntegerArgumentType.getInteger(context, "version");

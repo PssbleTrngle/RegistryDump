@@ -3,6 +3,7 @@ package com.possible_triangle.registry_dump.dump;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.possible_triangle.registry_dump.service.IPlatformHelper;
@@ -10,6 +11,8 @@ import com.possible_triangle.registry_dump.service.IPlatformHelper;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Stream;
 
@@ -30,8 +33,9 @@ public interface IDump {
 
     int LATEST_VERSION = 2;
 
-    static IDump get(MinecraftServer server, int version) {
+    static IDump get(MinecraftServer server, int version) throws CommandSyntaxException {
         var outputDirectory = server.getServerDirectory().resolve("dump");
+        prepare(outputDirectory, version);
         return switch (version) {
             case 1 -> new FileDumpV1(outputDirectory);
             case 2 -> new FileDumpV2(outputDirectory);
@@ -47,7 +51,7 @@ public interface IDump {
         dump(registry.key(), registry.value().holders());
     }
 
-    default Map<String, Collection<ResourceLocation>> gatherIds(Stream<? extends Holder<?>> entries) {
+    static Map<String, Collection<ResourceLocation>> gatherIds(Stream<? extends Holder<?>> entries) {
         final var byNamespace = new HashMap<String, Collection<ResourceLocation>>();
 
         final var ids = entries.map(Holder::unwrapKey)
@@ -62,7 +66,7 @@ public interface IDump {
         return byNamespace;
     }
 
-    default void write(Path path, JsonElement json) throws CommandSyntaxException {
+    static void write(Path path, JsonElement json) throws CommandSyntaxException {
         if (!Files.exists(path)) {
             try {
                 Files.createDirectories(path.getParent());
@@ -77,6 +81,14 @@ public interface IDump {
         } catch (IOException e) {
             throw FAILED_WRITE.create(path);
         }
+    }
+
+    private static void prepare(Path path, int version) throws CommandSyntaxException {
+        var metadata = new JsonObject();
+        metadata.addProperty("version", version);
+        final var formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        metadata.addProperty("timestamp", LocalDateTime.now().format(formatter));
+        write(path.resolve(".metadata.json"), metadata);
     }
 
 }
