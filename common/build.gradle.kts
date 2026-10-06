@@ -1,3 +1,3 @@
 plugins {
-    id("com.possible-triangle.common")
+    id("com.possible-triangle.vanilla")
 }

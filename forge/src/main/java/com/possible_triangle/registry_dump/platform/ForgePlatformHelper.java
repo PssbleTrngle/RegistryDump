@@ -1,10 +1,11 @@
 package com.possible_triangle.registry_dump.platform;
 
 import com.possible_triangle.registry_dump.service.IPlatformHelper;
-import java.util.stream.Stream;
-import net.neoforged.fml.ModList;
+import net.minecraftforge.fml.ModList;
 
-public class NeoForgePlatformHelper implements IPlatformHelper {
+import java.util.stream.Stream;
+
+public class ForgePlatformHelper implements IPlatformHelper {
 
     @Override
     public Stream<ModInfo> collectMods() {
